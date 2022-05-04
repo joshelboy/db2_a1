@@ -1,0 +1,33 @@
+{
+    "$jsonSchema":{
+        "title" : "locations",
+        "Type": "object",
+        "required": ["id", "street_address", "postal_code", "city", "state_province", "country"],
+        "properties": {
+            "id": {}, 
+            "street_address": {}, 
+            "postal_code": {}, 
+            "city": {}, 
+            "state_province" :{}, 
+            "country": {
+                "description": "Land einer Location",
+                "Type": "object",
+                "required": ["country_id", "country_name", "region"],
+                "properties":{
+                    "country_id": {}, 
+                    "country_name": {}, 
+                    "region": {
+                        "description": "Region eines Landes",
+                        "Type": "object",
+                        "required": ["region_id", "region_name"],
+                        "properties":{
+                            "region_id": {},  
+                            "region_name": {  
+                    }
+                }
+                    }
+                }
+            }
+        }
+    }
+}

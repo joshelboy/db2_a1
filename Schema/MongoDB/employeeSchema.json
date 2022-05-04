@@ -1,0 +1,76 @@
+{
+    "$jsonSchema":{
+        "title" : "employee",
+        "Type": "object",
+        "required": ["id", "first_name", "last_Name", "email", "phone_number", "hire_date", "job", "salary", "comission_pct", "manager", "department", "job_history"],
+        "properties": {
+            "id": {
+                "description": "Nummer eines Mitarbeiters",
+                "type": "int"
+            },
+            "first_name": {
+                "description": "Vorname eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "last_Name": {
+                "description": "Nachname eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "email": {
+                "description": "Email eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "phone_number": {
+                "description": "Telefonnummer eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "hire_date": {
+                "description": "Einstellungsdatum eines Mitarbeiters",
+                "type": "date"
+            }, 
+            "job": {
+                "description": "Job eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "salary": {
+                "description": "Gehalt eines Mitarbeiters",
+                "type": "int"
+            }, 
+            "comission_pct": {
+                "description": "Kommission eines Mitarbeiters",
+                "type": "int"
+            }, 
+            "manager": {
+                "description": "Manager eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "department": {
+                "description": "Arbeitsort eines Mitarbeiters",
+                "type": "string"
+            },
+            "job_history": {
+                "description": "ehemalige Jobs eines Mitarbeiters",
+                "Type": "object",
+                "required": ["start_date", "end_date", "job", "department"],
+                "properties":{
+                    "start_date" : {
+                        "description": "Einstellungsdatum eines Mitarbeiters",
+                        "type": "date"
+                    }, 
+                    "end_date":{
+                        "description": "Austrittsdatum eines Mitarbeiters",
+                        "type": "date"
+                    }, 
+                    "job":{
+                        "description": "ehemaliger Job eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "department":{
+                        "description": "ehemaliger Arbeitsort eines Mitarbeiters",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

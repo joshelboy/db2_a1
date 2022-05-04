@@ -1,0 +1,13 @@
+{
+    "$jsonSchema":{
+        "title" : "departments",
+        "Type": "object",
+        "required": ["id", "department_title", "manager", "location"],
+        "properties": {
+            "id": {}, 
+            "department_title": {}, 
+            "manager": {}, 
+            "location": {}
+        }
+    }
+}

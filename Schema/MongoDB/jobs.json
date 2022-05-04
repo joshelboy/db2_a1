@@ -1,0 +1,25 @@
+{
+    "$jsonSchema":{
+        "title" : "jobs",
+        "Type": "object",
+        "required": ["id", "job_title", "min_salary", "max_salary"],
+        "properties": {
+            "id": {
+                "description": "Nummer eines Jobs",
+                "type": "int"
+            }, 
+            "job_title":{
+                "description": "Name eines Jobs",
+                "type": "string"
+            }, 
+            "min_salary":{
+                "description": "Mindestgehalt eines Jobs",
+                "type": "int"
+            }, 
+            "max_salary":{
+                "description": "Maximalgehalt eines Jobs",
+                "type": "int"
+            }
+        }
+    }
+}
