@@ -63,16 +63,20 @@ while (True):
                 value = input("Für " + key + ": ")
                 values.append({ key: value })
 
+        valueStack = {
+            "table": c_table,
+            "query": values
+        }
+
         string = {
             "mode": "c",
-            "table": c_table,
-            "values": values
+            "values": valueStack
         }
         dbs = {
             "dbs": dbs_choice,
-            "operation": string
+            "params": string
         }
-        controller.recieveInput(dbs)
+        controller.recieveInput(json.dumps(dbs))
 
     elif crud_choice == "2":
         print("")
