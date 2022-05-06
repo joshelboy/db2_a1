@@ -1,0 +1,29 @@
+{
+    "$jsonSchema":{
+        "title" : "job_history",
+        "Type": "object",
+        "required": ["employee_id","start_date", "end_date", "job", "department"],
+        "properties":{
+            "employee_id":{
+                "description": "ID eines Mitarbeiters",
+                "type": "int"
+            },
+            "start_date" : {
+                "description": "Einstellungsdatum eines Mitarbeiters",
+                "type": "date"
+                }, 
+            "end_date":{
+                "description": "Austrittsdatum eines Mitarbeiters",
+                    "type": "date"
+                }, 
+            "job":{
+                "description": "ehemaliger Job eines Mitarbeiters",
+                "type": "string"
+            }, 
+            "department":{
+                "description": "ehemaliger Arbeitsort eines Mitarbeiters",
+                "type": "string"
+            }           
+        }
+    }
+}

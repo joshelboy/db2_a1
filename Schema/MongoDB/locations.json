@@ -2,7 +2,7 @@
     "$jsonSchema":{
         "title" : "locations",
         "Type": "object",
-        "required": ["id", "street_address", "postal_code", "city", "state_province", "country"],
+        "required": ["id", "street_address", "postal_code", "city", "state_province", "country", "region"],
         "properties": {
             "id": {
                 "description": "Nummer eines Location",
