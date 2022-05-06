@@ -7,6 +7,7 @@ import controller.db_controller.mongo_controller as mongo
 
 def manageMongo(content):
 
+    print(content)
     for key, value in content:
         if key == "params":
             for subkey, subvalue in value.items():
