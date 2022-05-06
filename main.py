@@ -79,13 +79,160 @@ while (True):
         controller.recieveInput(json.dumps(dbs))
 
     elif crud_choice == "2":
-        print("")
+
+        returnOverview = getOverview()
+
+        print("+++++++++++++++++++")
+        print("Alle Tabellen:")
+        print()
+
+        for key, value in returnOverview:
+            print(key)
+
+        print()
+
+        r_table = input("Welche Tabelle (name): ")
+        returnTable = getTable(r_table)
+
+        print("Alle Spalten in " + r_table + ": ")
+        print()
+
+        for key, value in returnTable:
+            print(key)
+
+        print()
+
+        print("[Bitte mit ',' trennen. z.B job, titel, name oder *]")
+        values = input("Was soll selektiert werden?: ")
+
+        valueStack = {
+            "table": r_table,
+            "query": values
+        }
+
+        string = {
+            "mode": "r",
+            "values": valueStack
+        }
+        dbs = {
+            "dbs": dbs_choice,
+            "params": string
+        }
+        controller.recieveInput(json.dumps(dbs))
 
     elif crud_choice == "3":
-        print("")
+        returnOverview = getOverview()
+
+        print("+++++++++++++++++++")
+        print("Alle Tabellen:")
+        print()
+
+        for key, value in returnOverview:
+            print(key)
+
+        print()
+
+        u_table = input("Welche Tabelle (name): ")
+        returnTable = getTable(u_table)
+
+        print("Welche Spalten in " + u_table + " sollen geändert werden? ")
+        print()
+
+        values = []
+
+        for key, value in returnTable:
+
+            choice = input("Soll " + key + " geändert werden? [j/n]")
+
+            if choice == "j" or choice == "y":
+
+                change = input("Zu was soll " + key + " geändert werden?: ")
+                values.append({ key: change })
+
+        print()
+
+        print()
+        print("Sollen Filter hinzugefügt werden?")
+        print()
+
+        where = []
+
+        for key, value in returnTable:
+
+            choice = input("Soll nach " + key + " gefiltert werden? [j/n]")
+
+            if choice == "j" or choice == "y":
+
+                operator = input("Welcher Operator soll genutzt werden? (<,>,=...): ")
+                filter = input("Mit was soll " + key + " verglichen werden?: ")
+                where.append({ key: [operator, filter] })
+
+        print()
+
+        valueStack = {
+            "table": u_table,
+            "query": values,
+            "where": where
+        }
+
+        string = {
+            "mode": "u",
+            "values": valueStack
+        }
+        dbs = {
+            "dbs": dbs_choice,
+            "params": string
+        }
+        controller.recieveInput(json.dumps(dbs))
 
     elif crud_choice == "4":
-        print("")
+        returnOverview = getOverview()
+
+        print("+++++++++++++++++++")
+        print("Alle Tabellen:")
+        print()
+
+        for key, value in returnOverview:
+            print(key)
+
+        print()
+
+        d_table = input("Welche Tabelle (name): ")
+        returnTable = getTable(d_table)
+
+        print()
+        print("Sollen Filter hinzugefügt werden?")
+        print()
+
+        where = []
+
+        for key, value in returnTable:
+
+            choice = input("Soll nach " + key + " gefiltert werden? [j/n]")
+
+            if choice == "j" or choice == "y":
+
+                operator = input("Welcher Operator soll genutzt werden? (<,>,=...): ")
+                filter = input("Mit was soll " + key + " verglichen werden?: ")
+                where.append({ key: [operator, filter] })
+
+        print()
+
+
+        valueStack = {
+            "table": d_table,
+            "where": where
+        }
+
+        string = {
+            "mode": "d",
+            "values": valueStack
+        }
+        dbs = {
+            "dbs": dbs_choice,
+            "params": string
+        }
+        controller.recieveInput(json.dumps(dbs))
 
     elif crud_choice == "5":
         ask_for_dbs = True
