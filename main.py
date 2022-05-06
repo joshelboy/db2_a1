@@ -1,5 +1,6 @@
 # main -> controller -> db_controller
 import json
+from controller import controller
 
 ask_for_dbs = True
 crud_choice = ""
@@ -60,9 +61,18 @@ while (True):
 
             if not id:
                 value = input("Für " + key + ": ")
-                values.append(value)
+                values.append({ key: value })
 
-        print(values)
+        string = {
+            "mode": "c",
+            "table": c_table,
+            "values": values
+        }
+        dbs = {
+            "dbs": dbs_choice,
+            "operation": string
+        }
+        controller.recieveInput(dbs)
 
     elif crud_choice == "2":
         print("")
