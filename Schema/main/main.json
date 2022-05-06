@@ -1,0 +1,196 @@
+{
+  "departments":
+  {
+    "department_id":
+    {
+      "type": "int",
+      "length": "",
+      "key": "id"
+    },
+    "department_name":
+    {
+      "type": "char",
+      "length": "30",
+      "key": "normal"
+    },
+    "manager":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    },
+    "location_id":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    }
+  },
+  "employees":
+  {
+    "employee_id":
+    {
+      "type": "int",
+      "length": "",
+      "key": "id"
+    },
+    "first_name":
+    {
+      "type": "char",
+      "length": "20",
+      "key": "normal"
+    },
+    "last_name":
+    {
+      "type": "char",
+      "length": "25",
+      "key": "normal"
+    },
+    "email":
+    {
+      "type": "char",
+      "length": "25",
+      "key": "normal"
+    },
+    "phone_number":
+    {
+      "type": "char",
+      "length": "20",
+      "key": "normal"
+    },
+    "hire_date":
+    {
+      "type": "date",
+      "length": "",
+      "key": "normal"
+    },
+    "job":
+    {
+      "type": "char",
+      "length": "10",
+      "key": "normal"
+    },
+    "salary":
+    {
+      "type": "numeric",
+      "length": "8,2",
+      "key": "normal"
+    },
+    "comission_pct":
+    {
+      "type": "numeric",
+      "length": "2,2",
+      "key": "normal"
+    },
+    "manager":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    },
+    "department":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    }
+  },
+  "job_history":
+  {
+    "employee_id":
+    {
+      "type": "int",
+      "length": "",
+      "key": "id"
+    },
+    "start_date":
+    {
+      "type": "date",
+      "length": "",
+      "key": "pk"
+    },
+    "end_date":
+    {
+      "type": "date",
+      "length": "",
+      "key": "normal"
+    },
+    "job":
+    {
+      "type": "char",
+      "length": "10",
+      "key": "normal"
+    },
+    "department":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    }
+  },
+  "jobs": {
+    "job_id":
+    {
+      "type": "char",
+      "length": "10",
+      "key": "id"
+    },
+    "job_title":
+    {
+      "type": "char",
+      "length": "35",
+      "key": "normal"
+    },
+    "min_salary":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    },
+    "max_salary":
+    {
+      "type": "int",
+      "length": "",
+      "key": "normal"
+    }
+  },
+  "locations":
+  {
+    "location_id":
+    {
+      "type": "int",
+      "length": "",
+      "key": "id"
+    },
+    "street_adress":
+    {
+      "type": "char",
+      "length": "40",
+      "key": "normal"
+    },
+    "postal_code":
+    {
+      "type": "char",
+      "length": "12",
+      "key": "normal"
+    },
+    "city":
+    {
+      "type": "char",
+      "length": "30",
+      "key": "normal"
+    },
+    "state_province":
+    {
+      "type": "char",
+      "length": "25",
+      "key": "normal"
+    },
+    "country":
+    {
+      "type": "char",
+      "length": "2",
+      "key": "normal"
+    }
+  }
+}
