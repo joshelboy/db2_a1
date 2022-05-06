@@ -4,10 +4,22 @@
         "Type": "object",
         "required": ["id", "department_title", "manager", "location"],
         "properties": {
-            "id": {}, 
-            "department_title": {}, 
-            "manager": {}, 
-            "location": {}
+            "id": {
+                "description": "Nummer eines departments",
+                "type": "int"
+            }, 
+            "department_title": {
+                "description": "Name eines departments",
+                "type": "string"
+            }, 
+            "manager": {
+                "description": "Manger eines departments",
+                "type": "string"
+            }, 
+            "location": {
+                "description": "location eines departments",
+                "type": "string"
+            }
         }
     }
 }

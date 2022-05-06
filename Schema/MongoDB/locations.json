@@ -4,27 +4,53 @@
         "Type": "object",
         "required": ["id", "street_address", "postal_code", "city", "state_province", "country"],
         "properties": {
-            "id": {}, 
-            "street_address": {}, 
-            "postal_code": {}, 
-            "city": {}, 
-            "state_province" :{}, 
+            "id": {
+                "description": "Nummer eines Location",
+                "type": "int"
+            }, 
+            "street_address": {
+                "description": "Adresse eines Location",
+                "type": "string"
+            }, 
+            "postal_code": {
+                "description": "Postleitzahl eines Location",
+                "type": "int"
+            }, 
+            "city": {
+                "description": "Stadt eines Location",
+                "type": "string"
+            }, 
+            "state_province" :{
+                "description": "Bundesland eines Location",
+                "type": "string"
+            }, 
             "country": {
                 "description": "Land einer Location",
                 "Type": "object",
                 "required": ["country_id", "country_name", "region"],
                 "properties":{
-                    "country_id": {}, 
-                    "country_name": {}, 
+                    "country_id": {
+                        "description": "Nummer eines Landes",
+                        "type": "int"
+                    }, 
+                    "country_name": {
+                        "description": "Name eines Landes",
+                        "type": "string"
+                    }, 
                     "region": {
                         "description": "Region eines Landes",
                         "Type": "object",
                         "required": ["region_id", "region_name"],
                         "properties":{
-                            "region_id": {},  
-                            "region_name": {  
-                    }
-                }
+                            "region_id": {
+                                "description": "Nummer eines Region",
+                                "type": "int"
+                            },  
+                            "region_name": { 
+                                "description": "Name einer Region",
+                                "type": "string" 
+                            }
+                        }
                     }
                 }
             }
