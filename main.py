@@ -105,9 +105,28 @@ while (True):
         print("[Bitte mit ',' trennen. z.B job, titel, name oder *]")
         values = input("Was soll selektiert werden?: ")
 
+        print()
+        print("Sollen Filter hinzugefügt werden?")
+        print()
+
+        where = []
+
+        for key, value in returnTable:
+
+            choice = input("Soll nach " + key + " gefiltert werden? [j/n]")
+
+            if choice == "j" or choice == "y":
+
+                operator = input("Welcher Operator soll genutzt werden? (<,>,=...): ")
+                filter = input("Mit was soll " + key + " verglichen werden?: ")
+                where.append({ key: [operator, filter] })
+
+        print()
+
         valueStack = {
             "table": r_table,
-            "query": values
+            "query": values,
+            "where": where
         }
 
         string = {
