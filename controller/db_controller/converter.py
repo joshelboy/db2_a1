@@ -1,4 +1,6 @@
-import pymongo
+from http import client
+from pymongo import MongoClient, InsertOne
+import json
 
 client = MongoClient("mongodb://localhost:27017")
 
@@ -10,6 +12,7 @@ def createMongoCollections(data):
     createLocationsTableMongoDB(data)
     createJobsTableMongoDB(data)
     createDepartmentsTableMongoDB(data)
+    createjobHistoryTableMongoDB(data)
 
 def createEmployeeTableMongoDB(data):
     jsonFile = open('Schema/MongoDB/employee.json')
@@ -33,5 +36,11 @@ def createDepartmentsTableMongoDB(data):
     jsonFile = open('Schema/MongoDB/departments.json')
     db.createCollection( "departments", jsonFile )
     collection = db["departments"]
+    collection.bulk_write(data)
+
+def createjobHistoryTableMongoDB(data):
+    jsonFile = open('Schema/MongoDB/job_history.json')
+    db.createCollection( "job_history", jsonFile )
+    collection = db["job_history"]
     collection.bulk_write(data)
 
