@@ -40,7 +40,34 @@ def manageMongo(content):
 
 
 def managePG(content):
-    print("Postgres")
+    for key, value in content:
+        if key == "params":
+            for subkey, subvalue in value.items():
+                if subkey == "mode":
+
+                    if subvalue == "c":
+                        for transmitKey, transmitValue in value.items():
+                            if transmitKey == "values":
+                                #mongo.insert(transmitValue)
+                                print(transmitValue)
+
+                    if subvalue == "r":
+                        for transmitKey, transmitValue in value.items():
+                            if transmitKey == "values":
+                                #mongo.insert(transmitValue)
+                                print(transmitValue)
+
+                    if subvalue == "u":
+                        for transmitKey, transmitValue in value.items():
+                            if transmitKey == "values":
+                                #mongo.insert(transmitValue)
+                                print(transmitValue)
+
+                    if subvalue == "d":
+                        for transmitKey, transmitValue in value.items():
+                            if transmitKey == "values":
+                                #mongo.insert(transmitValue)
+                                print(transmitValue)
 
 def recieveInput(input):
     data = json.loads(input)
