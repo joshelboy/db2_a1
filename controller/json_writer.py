@@ -70,13 +70,8 @@ def connect():
             
             redis.insertJsonToRedis(str(departments[0]), str(employees[0]), str(jobs[0]), str(job_history[0]), str(locations[0]))
 
-        except ValueError:
+        except:
             print("JSON fetch failed")
-
-        #try:
-            #cur.execute("ALTER ROLE postgres SET search_path TO hr;")
-        #except:
-        #    print("Search path was not set")
 
         cur.close
     except ValueError:

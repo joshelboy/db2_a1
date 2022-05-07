@@ -23,7 +23,14 @@ def getTable(tablename):
         if (tablename == key):
             return value.items()
 
+init_db = True
+
 while (True):
+
+    if init_db:
+        json_writer.connect()
+        init_db = False
+
     if(ask_for_dbs):
         print("Zur Auswahl stehen:")
         print("1: Relationales Datenbanksystem (PostgreSQL)")
@@ -259,3 +266,4 @@ while (True):
 
     elif crud_choice == "5":
         ask_for_dbs = True
+

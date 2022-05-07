@@ -12,8 +12,7 @@ def connect(query):
 
         cur = conn.cursor()
 
-        cur.execute('SELECT version()')
-        #db_version = cur.fetchone()
+        cur.execute(query)
 
         cur.close
     except:
@@ -35,10 +34,10 @@ def create(json_string):
 
     query = ", ".join( repr(e) for e in query )
 
-    query_request = "INSERT INTO " + table + " VALUES ('" + query + "');"
-    print(query_request)
+    query_request = "INSERT INTO hr." + table + " VALUES ('" + query + "');"
+    #print(query_request)
 
-    #connect(query_request)
+    connect(query_request)
 
 def read(json_string):
     table = ""
@@ -63,7 +62,7 @@ def read(json_string):
 
     if where:
 
-        query_request = "SELECT " + query + " FROM " + table + " WHERE "
+        query_request = "SELECT " + query + " FROM hr." + table + " WHERE "
 
         multipleRows = False
 
@@ -82,9 +81,9 @@ def read(json_string):
                     query_request = query_request + " AND " + key + " " + value[0] + " " + value[1]
 
     else:
-        query_request = "SELECT " + query + " FROM " + table
+        query_request = "SELECT " + query + " FROM hr." + table
 
-    print(query_request)
+    connect(query_request)
 
 def update(json_string):
     table = ""
@@ -109,7 +108,7 @@ def update(json_string):
 
     if where:
 
-        query_request = "UPDATE " + table + " SET ('" + query + "') WHERE "
+        query_request = "UPDATE hr." + table + " SET ('" + query + "') WHERE "
 
         multipleRows = False
 
@@ -128,9 +127,9 @@ def update(json_string):
                     query_request = query_request + " AND " + key + " " + value[0] + " " + value[1]
 
     else:
-        query_request = "UPDATE " + table + " SET ('" + query + "');"
+        query_request = "UPDATE hr." + table + " SET ('" + query + "');"
 
-    print(query_request)
+    connect(query_request)
 
 def delete(json_string):
     table = ""
@@ -144,7 +143,7 @@ def delete(json_string):
 
     if where:
 
-        query_request = "DELETE FROM " + table + " WHERE "
+        query_request = "DELETE FROM hr." + table + " WHERE "
 
         multipleRows = False
 
@@ -163,6 +162,6 @@ def delete(json_string):
                     query_request = query_request + " AND " + key + " " + value[0] + " " + value[1]
 
     else:
-        query_request = "DELETE FROM " + table + ";"
+        query_request = "DELETE FROM hr." + table + ";"
 
-    print(query_request)
+    connect(query_request)

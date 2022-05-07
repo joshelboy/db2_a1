@@ -18,7 +18,7 @@ def config(filename='./conf/config.ini', section='postgres'):
 
     return db
 
-def mongo_config(filename='config.ini', section='mongo'):
+def mongo_config(filename='./conf/config.ini', section='mongo'):
     parser = ConfigParser()
     parser.read(filename)
 
