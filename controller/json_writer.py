@@ -67,8 +67,6 @@ def connect():
             mongo.createjobHistoryTableMongoDB(str(job_history[0]))
             mongo.createLocationsTableMongoDB(str(locations[0]))
 
-
-
         except ValueError:
             print("JSON fetch failed")
 

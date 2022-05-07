@@ -8,6 +8,8 @@ ask_for_dbs = True
 crud_choice = ""
 dbs_choice = ""
 
+json_writer.connect()
+
 def getOverview():
     jsonFile = open('Schema/main/main.json')
     data = json.load(jsonFile)
