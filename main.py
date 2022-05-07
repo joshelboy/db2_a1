@@ -1,6 +1,8 @@
 # main -> controller -> db_controller
 import json
 from controller import controller
+from controller.db_controller import config
+from controller import json_writer
 
 ask_for_dbs = True
 crud_choice = ""

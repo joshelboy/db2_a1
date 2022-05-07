@@ -1,7 +1,8 @@
 import psycopg2
-import config
+import controller.db_controller.config as config
+import controller.db_controller.converter as mongo
 
-def connect(query):
+def connect():
     conn = None
     try:
         params = config.config()
@@ -10,28 +11,31 @@ def connect(query):
 
         cur = conn.cursor()
 
-        try:
-            cur.execute('CREATE SCHEMA hr')
-        except:
-            print("Schema may already exists")
+        #try:
+        #    cur.execute('CREATE SCHEMA hr')
+        #except:
+        #    print("Schema may already exists")
 
-        fileCreate = open("./schema/hr_create.sql", "r")
-        filePopulate = open("./schema/hr_populate.sql", "r")
-        fileComment = open("./schema/hr_comment.sql", "r")
+        fileCreate = open("./Schema/main/hr_create.sql", "r")
+        filePopulate = open("./Schema/main/hr_populate.sql", "r")
+        fileComment = open("./Schema/main/hr_comment.sql", "r")
 
         try:
-            cur.execute(fileCreate)
+            cur.execute(fileCreate.read())
         except:
+            conn.rollback()
             print("File may already exists")
 
         try:
-            cur.execute(filePopulate)
+            cur.execute(filePopulate.read())
         except:
+            conn.rollback()
             print("File may already filled")
 
         try:
-            cur.execute(fileComment)
+            cur.execute(fileComment.read())
         except:
+            conn.rollback()
             print("File couldnt be commented")
         #db_version = cur.fetchone()
 
@@ -57,39 +61,24 @@ def connect(query):
             cur.execute('SELECT json_agg(e) FROM(SELECT * FROM hr.regions) e;')
             regions = cur.fetchall()
 
-            locations_file = open('../Schema/PostgreSQL/locations.json')
-            locations_file.write(locations)
-            locations_file.close()
+            mongo.createDepartmentsTableMongoDB(str(departments[0]))
+            mongo.createEmployeeTableMongoDB(str(employees[0]))
+            mongo.createJobsTableMongoDB(str(jobs[0]))
+            mongo.createjobHistoryTableMongoDB(str(job_history[0]))
+            mongo.createLocationsTableMongoDB(str(locations[0]))
 
-            departments_file = open('../Schema/PostgreSQL/departments.json')
-            departments_file.write(departments)
-            departments_file.close()
 
-            countries_file = open('../Schema/PostgreSQL/countries.json')
-            countries_file.write(departments)
-            countries_file.close()
 
-            regions_file = open('../Schema/PostgreSQL/regions.json')
-            regions_file.write(departments)
-            regions_file.close()
-
-            job_history_file = open('../Schema/PostgreSQL/job_history.json')
-            job_history_file.write(departments)
-            job_history_file.close()
-
-            job_file = open('../Schema/PostgreSQL/job.json')
-            job_file.write(departments)
-            job_file.close()
-
-            employees_file = open('../Schema/PostgreSQL/employees.json')
-            employees_file.write(departments)
-            employees_file.close()
-
-        except:
+        except ValueError:
             print("JSON fetch failed")
 
+        #try:
+            #cur.execute("ALTER ROLE postgres SET search_path TO hr;")
+        #except:
+        #    print("Search path was not set")
+
         cur.close
-    except:
+    except ValueError:
         return "Error"
     finally:
         if conn is not None:
