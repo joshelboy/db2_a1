@@ -16,7 +16,7 @@ def config(filename='.../database.ini', section='postgres'):
 
     return db
 
-def mongo_config(filename='.../database.ini', section='mongo'):
+def mongo_config(filename='config.ini', section='mongo'):
     parser = ConfigParser()
     parser.read(filename)
 
@@ -29,5 +29,5 @@ def mongo_config(filename='.../database.ini', section='mongo'):
 
     else:
         print("Problem mit der config.ini")
-
+        
     return db
