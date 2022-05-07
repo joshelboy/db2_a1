@@ -3,7 +3,8 @@
 #2. Methode aus passendem Controller ausführen
 #3. return an main.py übergeben
 import json
-import controller.db_controller.mongo_controller as mongo
+#import controller.db_controller.mongo_controller as mongo
+import controller.db_controller.pg_controller as pg
 
 def manageMongo(content):
 
@@ -47,26 +48,26 @@ def managePG(content):
                     if subvalue == "c":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                pg.create(transmitValue)
+                                #print(transmitValue)
 
                     if subvalue == "r":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                pg.read(transmitValue)
+                                #print(transmitValue)
 
                     if subvalue == "u":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                pg.update(transmitValue)
+                                #print(transmitValue)
 
                     if subvalue == "d":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                pg.delete(transmitValue)
+                                #print(transmitValue)
 
 def recieveInput(input):
     data = json.loads(input)
@@ -74,6 +75,6 @@ def recieveInput(input):
     for key, value in data.items():
         if key == "dbs":
             if value == "1":
-                managePG(value)
+                managePG(data.items())
             elif value == "3":
                 manageMongo(data.items())
