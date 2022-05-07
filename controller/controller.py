@@ -5,6 +5,7 @@
 import json
 #import controller.db_controller.mongo_controller as mongo
 import controller.db_controller.pg_controller as pg
+import controller.db_controller.mongo_controller as mg
 
 def manageMongo(content):
 
@@ -17,26 +18,26 @@ def manageMongo(content):
                     if subvalue == "c":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                mg.createMongoDB(transmitValue)
+                                # print(transmitValue)
 
                     if subvalue == "r":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                mg.readMongoDB(transmitValue)
+                                # print(transmitValue)
 
                     if subvalue == "u":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                mg.updateMongoDB(transmitValue)
+                                # print(transmitValue)
 
                     if subvalue == "d":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                #mongo.insert(transmitValue)
-                                print(transmitValue)
+                                mg.deleteMongoDB(transmitValue)
+                                # print(transmitValue)
 
 
 
