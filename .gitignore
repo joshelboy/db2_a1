@@ -1,3 +1,6 @@
 .idea
 db2_a1.iml
 __pycache__
+controller/__pycache__/__init__.cpython-39.pyc
+controller/__pycache__/controller.cpython-39.pyc
+controller/__pycache__/mongo_controller.cpython-39.pyc
