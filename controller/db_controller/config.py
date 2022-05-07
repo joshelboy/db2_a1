@@ -1,6 +1,8 @@
+import os.path
 from configparser import ConfigParser
 
-def config(filename='.../database.ini', section='postgres'):
+def config(filename='./conf/config.ini', section='postgres'):
+
     parser = ConfigParser()
     parser.read(filename)
 
@@ -16,7 +18,7 @@ def config(filename='.../database.ini', section='postgres'):
 
     return db
 
-def mongo_config(filename='.../database.ini', section='mongo'):
+def mongo_config(filename='config.ini', section='mongo'):
     parser = ConfigParser()
     parser.read(filename)
 
