@@ -1,6 +1,7 @@
 import psycopg2
 import controller.db_controller.config as config
 import controller.db_controller.converter as mongo
+import controller.db_controller.redis_controller as redis
 
 def connect():
     conn = None
@@ -66,6 +67,8 @@ def connect():
             mongo.createJobsTableMongoDB(str(jobs[0]))
             mongo.createjobHistoryTableMongoDB(str(job_history[0]))
             mongo.createLocationsTableMongoDB(str(locations[0]))
+            
+            redis.insertJsonToRedis(str(departments[0]), str(employees[0]), str(jobs[0]), str(job_history[0]), str(locations[0]))
 
         except ValueError:
             print("JSON fetch failed")
