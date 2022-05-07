@@ -22,6 +22,9 @@ def getTable(tablename):
             return value.items()
 
 while (True):
+
+    json_writer.connect()
+
     if(ask_for_dbs):
         print("Zur Auswahl stehen:")
         print("1: Relationales Datenbanksystem (PostgreSQL)")
