@@ -1,0 +1,148 @@
+{
+    "$jsonSchema":{
+        "title" : "redis.json",
+        "Type": "object",
+        "required": ["departments_id", "job_id", "job_history_id", "location_id", "employees_id"],
+        "properties": {
+            "departments_id": {
+                "description": "Nummer eines departments",
+                "type": "int",
+                "properties": {
+                    "department_title": {
+                        "description": "Name eines departments",
+                        "type": "string"
+                    }, 
+                    "manager": {
+                        "description": "Manger eines departments",
+                        "type": "string"
+                    }, 
+                    "location": {
+                        "description": "location eines departments",
+                        "type": "string"
+                    }
+                }
+            },
+            "job_id" : {
+                "description": "Nummer eines departments",
+                "type": "int",
+                "properties": {
+                    "job_title":{
+                        "description": "Name eines Jobs",
+                        "type": "string"
+                    }, 
+                    "min_salary":{
+                        "description": "Mindestgehalt eines Jobs",
+                        "type": "int"
+                    }, 
+                    "max_salary":{
+                        "description": "Maximalgehalt eines Jobs",
+                        "type": "int"
+                    }
+                }
+
+            },
+            "job_history_id": {
+                "description": "Nummer eines departments",
+                "type": "int",
+                "properties": {
+                    "employee_id":{
+                        "description": "ID eines Mitarbeiters",
+                        "type": "int"
+                    },
+                    "start_date" : {
+                        "description": "Einstellungsdatum eines Mitarbeiters",
+                        "type": "date"
+                        }, 
+                    "end_date":{
+                        "description": "Austrittsdatum eines Mitarbeiters",
+                            "type": "date"
+                        }, 
+                    "job":{
+                        "description": "ehemaliger Job eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "department":{
+                        "description": "ehemaliger Arbeitsort eines Mitarbeiters",
+                        "type": "string"
+                    } 
+                }
+            }, 
+            "location_id": {
+                "description": "Nummer eines departments",
+                "type": "int",
+                "properties": {
+                    "street_address": {
+                        "description": "Adresse eines Location",
+                        "type": "string"
+                    }, 
+                    "postal_code": {
+                        "description": "Postleitzahl eines Location",
+                        "type": "int"
+                    }, 
+                    "city": {
+                        "description": "Stadt eines Location",
+                        "type": "string"
+                    }, 
+                    "state_province" :{
+                        "description": "Bundesland eines Location",
+                        "type": "string"
+                    }, 
+                    "country": {
+                        "description": "Name eines Landes",
+                        "type": "string"
+                        }, 
+                    "region": {
+                        "description": "Name einer Region",
+                        "type": "string" 
+                    }
+                }
+            }, 
+            "employees_id": {
+                "description": "Nummer eines departments",
+                "type": "int",
+                "properties": {
+                    "first_name": {
+                        "description": "Vorname eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "last_Name": {
+                        "description": "Nachname eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "email": {
+                        "description": "Email eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "phone_number": {
+                        "description": "Telefonnummer eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "hire_date": {
+                        "description": "Einstellungsdatum eines Mitarbeiters",
+                        "type": "date"
+                    }, 
+                    "job": {
+                        "description": "Job eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "salary": {
+                        "description": "Gehalt eines Mitarbeiters",
+                        "type": "int"
+                    }, 
+                    "comission_pct": {
+                        "description": "Kommission eines Mitarbeiters",
+                        "type": "int"
+                    }, 
+                    "manager": {
+                        "description": "Manager eines Mitarbeiters",
+                        "type": "string"
+                    }, 
+                    "department": {
+                        "description": "Arbeitsort eines Mitarbeiters",
+                        "type": "string"
+                    }
+                }
+            }
+       }
+    }
+}

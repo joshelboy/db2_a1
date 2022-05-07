@@ -1,14 +1,13 @@
 from http import client
 from pymongo import MongoClient, InsertOne
 import json
-
-client = MongoClient("mongodb://localhost:27017")
-
-db = client["DB2-B1"]
-users = db["user"]
-collection = db["employees"]
+import config
 
 def createMongoDB(content):
+
+    params = config.mongo_config()
+    client = MongoClient("mongodb://" + params["host"])
+    db = client[params["host"]]
     
     datensatz = {}
     for key, value in content:
@@ -21,6 +20,11 @@ def createMongoDB(content):
     collection.insert_one(datensatz)
 
 def readMongoDB(content):
+
+    params = config.mongo_config()
+    client = MongoClient("mongodb://" + params["host"])
+    db = client[params["host"]]
+
     dataToFind = {}
     valueToSearch = {}
     for key, value in content.items():
@@ -42,6 +46,11 @@ def readMongoDB(content):
     return data
 
 def updateMongoDB(content):
+
+    params = config.mongo_config()
+    client = MongoClient("mongodb://" + params["host"])
+    db = client[params["host"]]
+
     newData = {}
     newDataToInsert = {} 
     oldData = {}
@@ -68,6 +77,11 @@ def updateMongoDB(content):
     collection.update_many(oldData, newData)
 
 def deleteMongoDB(content):
+
+    params = config.mongo_config()
+    client = MongoClient("mongodb://" + params["host"])
+    db = client[params["host"]]
+
     dataToDelete = {}
     dataToSearch = {}
     for key, value in content.items():
