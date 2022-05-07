@@ -43,7 +43,7 @@ def readMongoDB(content):
     
     data = collection.find(dataToFind)
 
-    return data
+    print(data)
 
 def updateMongoDB(content):
 
@@ -55,7 +55,7 @@ def updateMongoDB(content):
     newDataToInsert = {} 
     oldData = {}
     valueToSearch = {}
-    for key, value in updatedata.items():
+    for key, value in content.items():
         if key == "table":
             collection = db[value]
         elif key == "query":
