@@ -1,25 +1,27 @@
 import json
 
 import psycopg2
-import config
+import controller.db_controller.config as config
 
 def connect(query):
     conn = None
     try:
-        params = config.config()
+        params = config.pg_config()
         #Connect to PGSQL
         conn = psycopg2.connect(**params)
 
         cur = conn.cursor()
 
         cur.execute(query)
+        result = cur.fetchall()
 
         cur.close
-    except:
+    except ValueError:
         return "Error"
     finally:
         if conn is not None:
             conn.close()
+            return result
             #DB closed
 
 def create(json_string):
@@ -52,7 +54,7 @@ def read(json_string):
         elif key == "where":
             where = value
 
-    query = ", ".join( repr(e) for e in query )
+    #query = ", ".join( repr(e) for e in query )
     #where = ", ".join( repr(e) for e in where )
 
     #print(where)
@@ -83,7 +85,7 @@ def read(json_string):
     else:
         query_request = "SELECT " + query + " FROM hr." + table
 
-    connect(query_request)
+    return connect(query_request)
 
 def update(json_string):
     table = ""
@@ -98,6 +100,7 @@ def update(json_string):
         elif key == "where":
             where = value
 
+    #@TODO: query irgendwie richtig machen
     query = ", ".join( repr(e) for e in query )
     #where = ", ".join( repr(e) for e in where )
 
@@ -108,7 +111,7 @@ def update(json_string):
 
     if where:
 
-        query_request = "UPDATE hr." + table + " SET ('" + query + "') WHERE "
+        query_request = "UPDATE hr." + table + " SET (" + query + "') WHERE "
 
         multipleRows = False
 
@@ -129,7 +132,7 @@ def update(json_string):
     else:
         query_request = "UPDATE hr." + table + " SET ('" + query + "');"
 
-    connect(query_request)
+    return connect(query_request)
 
 def delete(json_string):
     table = ""
@@ -164,4 +167,4 @@ def delete(json_string):
     else:
         query_request = "DELETE FROM hr." + table + ";"
 
-    connect(query_request)
+    return connect(query_request)

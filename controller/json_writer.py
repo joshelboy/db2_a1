@@ -6,7 +6,7 @@ import controller.db_controller.redis_controller as redis
 def connect():
     conn = None
     try:
-        params = config.config()
+        params = config.pg_config()
         #Connect to PGSQL
         conn = psycopg2.connect(**params)
 

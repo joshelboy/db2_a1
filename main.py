@@ -148,7 +148,7 @@ while (True):
             "dbs": dbs_choice,
             "params": string
         }
-        controller.recieveInput(json.dumps(dbs))
+        print(controller.recieveInput(json.dumps(dbs)))
 
     elif crud_choice == "3":
         returnOverview = getOverview()
@@ -213,7 +213,7 @@ while (True):
             "dbs": dbs_choice,
             "params": string
         }
-        controller.recieveInput(json.dumps(dbs))
+        print(controller.recieveInput(json.dumps(dbs)))
 
     elif crud_choice == "4":
         returnOverview = getOverview()

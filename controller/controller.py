@@ -50,25 +50,25 @@ def managePG(content):
                     if subvalue == "c":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                pg.create(transmitValue)
+                                return pg.create(transmitValue)
                                 #print(transmitValue)
 
                     if subvalue == "r":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                pg.read(transmitValue)
+                                return pg.read(transmitValue)
                                 #print(transmitValue)
 
                     if subvalue == "u":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                pg.update(transmitValue)
+                                return pg.update(transmitValue)
                                 #print(transmitValue)
 
                     if subvalue == "d":
                         for transmitKey, transmitValue in value.items():
                             if transmitKey == "values":
-                                pg.delete(transmitValue)
+                                return pg.delete(transmitValue)
                                 #print(transmitValue)
 
 def recieveInput(input):
@@ -77,6 +77,6 @@ def recieveInput(input):
     for key, value in data.items():
         if key == "dbs":
             if value == "1":
-                managePG(data.items())
+                return managePG(data.items())
             elif value == "3":
                 manageMongo(data.items())
