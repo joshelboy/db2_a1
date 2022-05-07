@@ -8,6 +8,7 @@ import controller.db_controller.pg_controller as pg
 
 def manageMongo(content):
 
+    print(content)
     for key, value in content:
         if key == "params":
             for subkey, subvalue in value.items():
