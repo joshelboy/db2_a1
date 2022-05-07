@@ -12,8 +12,7 @@ def connect(query):
 
         cur = conn.cursor()
 
-        cur.execute('SELECT version()')
-        #db_version = cur.fetchone()
+        cur.execute(query)
 
         cur.close
     except:
@@ -36,9 +35,9 @@ def create(json_string):
     query = ", ".join( repr(e) for e in query )
 
     query_request = "INSERT INTO hr." + table + " VALUES ('" + query + "');"
-    print(query_request)
+    #print(query_request)
 
-    #connect(query_request)
+    connect(query_request)
 
 def read(json_string):
     table = ""
@@ -84,7 +83,7 @@ def read(json_string):
     else:
         query_request = "SELECT " + query + " FROM hr." + table
 
-    print(query_request)
+    connect(query_request)
 
 def update(json_string):
     table = ""
@@ -130,7 +129,7 @@ def update(json_string):
     else:
         query_request = "UPDATE hr." + table + " SET ('" + query + "');"
 
-    print(query_request)
+    connect(query_request)
 
 def delete(json_string):
     table = ""
@@ -165,4 +164,4 @@ def delete(json_string):
     else:
         query_request = "DELETE FROM hr." + table + ";"
 
-    print(query_request)
+    connect(query_request)

@@ -21,9 +21,13 @@ def getTable(tablename):
         if (tablename == key):
             return value.items()
 
+init_db = True
+
 while (True):
 
-    json_writer.connect()
+    if init_db:
+        json_writer.connect()
+        init_db = False
 
     if(ask_for_dbs):
         print("Zur Auswahl stehen:")
@@ -260,3 +264,4 @@ while (True):
 
     elif crud_choice == "5":
         ask_for_dbs = True
+
